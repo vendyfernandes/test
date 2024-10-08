@@ -19,3 +19,9 @@ Route::post('/task', [TestController::class, 'store2'])->name('task.store2');
 Route::get('/task/{task}/edit', [TestController::class, 'edit'])->name('task.edit');
 Route::put('/task/{task}/update', [TestController::class, 'update'])->name('task.update');
 Route::delete('/task/{task}/destroy', [TestController::class, 'destroy'])->name('task.destroy');
+
+Route::get('/task/createcategory', [TestController::class, 'create'])->name('task.createcategory');
+Route::post('/task', [TestController::class, 'store3'])->name('task.store3');
+Route::get('/task/{category}/edit', [TestController::class, 'editcategory'])->name('task.editcategory');
+Route::put('/task/{category}/update', [TestController::class, 'updatecategory'])->name('task.updatecategory');
+Route::delete('/task/{category}/destroy', [TestController::class, 'destroycategory'])->name('task.destroycategory');
