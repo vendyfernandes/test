@@ -99,4 +99,8 @@ class TestController extends Controller
         $task->delete();
         return redirect(route('task.dashboard'))->with('success', 'Task Deleted Successfully');
     }
+
+    public function createcategory(){
+        return view('task.create');
+    }
 }
