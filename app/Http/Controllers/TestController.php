@@ -65,7 +65,7 @@ class TestController extends Controller
         //dd($request);
         $data = $request->validate([
             'user_id' => 'required',
-            'title' => 'required|alpha',
+            'title' => 'required',
             'description' => 'required|alpha',
             'status' => 'required',
             'due_date' => 'required'
@@ -76,12 +76,12 @@ class TestController extends Controller
         return redirect(route('task.dashboard'));
     }
 
-    public function edit(Product $product){
+    public function edit(Task $task){
         //dd($product);
-        return view('products.edit', ['product' => $product]);
+        return view('task.edit', ['task' => $task]);
     }
 
-    public function update(Product $product, Request $request){
+    public function update(Task $task, Request $request){
         $data = $request->validate([
             'user_id' => 'required',
             'title' => 'required|alpha',
