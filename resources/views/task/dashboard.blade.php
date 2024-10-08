@@ -21,6 +21,7 @@
         </div>
         <br>
         <table border="1">
+            <caption>Tasks Table</caption>
             <tr>
                 <th>User ID</th>
                 <th>Title</th>
@@ -44,7 +45,37 @@
                         <form method="post" action="{{route('task.destroy', ['task' => $task])}}">
                             @csrf 
                             @method('delete')
-                            <input type="submit" value="Delete" />
+                            <button type="submit" class="btn btn-danger">Delete </button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </table>
+        <br><br>
+        <div>
+            <a href="{{route('task.createcategory')}}">Create a Category</a>
+        </div>
+        <br>
+        <table border="1">
+            <caption>Category Table</caption>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            @foreach($tasks as $task)
+                <tr>
+                    <td>{{$category->id}}</td>
+                    <td>{{$category->name}}</td>
+                    <td>
+                        <a href="{{route('task.editcategory', ['category' => $category])}}">Edit</a>
+                    </td>
+                    <td>
+                        <form method="post" action="{{route('task.destroycategory', ['category' => $category])}}">
+                            @csrf 
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger">Delete </button>
                         </form>
                     </td>
                 </tr>
