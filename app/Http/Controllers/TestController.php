@@ -83,15 +83,20 @@ class TestController extends Controller
 
     public function update(Product $product, Request $request){
         $data = $request->validate([
-            'user_id' => 'required|alpha',
+            'user_id' => 'required',
             'title' => 'required|alpha',
             'description' => 'required',
             'status' => 'required',
             'due_date' => 'required'
         ]);
 
-        $product->update($data);
+        $task->update($data);
 
-        return redirect(route('product.index'))->with('success', 'Product Updated Successfully');
+        return redirect(route('task.dashboard'))->with('success', 'Task Updated Successfully');
+    }
+
+    public function destroy(Task $task){
+        $task->delete();
+        return redirect(route('task.dashboard'))->with('success', 'Task Deleted Successfully');
     }
 }
