@@ -18,3 +18,4 @@ Route::get('/task/create', [TestController::class, 'create'])->name('task.create
 Route::post('/task', [TestController::class, 'store2'])->name('task.store2');
 Route::get('/task/{task}/edit', [TestController::class, 'edit'])->name('task.edit');
 Route::put('/task/{task}/update', [TestController::class, 'update'])->name('task.update');
+Route::delete('/task/{task}/destroy', [TestController::class, 'destroy'])->name('task.destroy');
