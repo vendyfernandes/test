@@ -10,7 +10,7 @@ use App\Models\Task;
 class TestController extends Controller
 {
     public function index(){
-        return view('task.index');
+        return view('task.index'); 
     }
 
     public function register(){
