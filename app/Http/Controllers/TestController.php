@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Category;
+
 
 class TestController extends Controller
 {
@@ -101,6 +103,39 @@ class TestController extends Controller
     }
 
     public function createcategory(){
-        return view('task.create');
+        return view('task.createcategory');
+    }
+
+    public function store3(Request $request){
+        //dd($request);
+        $data = $request->validate([
+            'id' => 'required',
+            'name' => 'required',
+        ]);
+
+        $newCategory = Category::create($data);
+
+        return redirect(route('task.dashboard'));
+    }
+
+    public function editcategory(Category $category){
+        //dd($product);
+        return view('task.editcategory', ['category' => $category]);
+    }
+
+    public function updatecategory(Category $category, Request $request){
+        $data = $request->validate([
+            'id' => 'required',
+            'name' => 'required|alpha',
+        ]);
+
+        $category->update($data);
+
+        return redirect(route('task.dashboard'))->with('success', 'Category Updated Successfully');
+    }
+
+    public function destroycategory(Category $category){
+        $category->delete();
+        return redirect(route('task.dashboard'))->with('success', 'Category Deleted Successfully');
     }
 }
