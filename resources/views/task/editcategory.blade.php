@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Edit Category</h1>
+    <div>
+        @if($errors->any())
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+        @endif
+    </div>
+    <form method="post" action="{{route('task.updatecategory', ['category' => $category])}}" >
+        @csrf
+        @method('put')
+        <div>
+            <label>Id: </label>
+            <input type="text" name="id" placeholder="Id" value="{{$category->id}}" />
+        </div>
+        <br>
+        <div>
+            <label>Category: </label>
+            <input type="text" name="name" placeholder="Name" value="{{$category->name}}" />
+        </div>
+        <br>
+        <div>
+            <input type="submit" value="Update" />
+        </div>
+    </form>
+</body>
+</html>
